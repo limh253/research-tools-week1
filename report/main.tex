@@ -236,7 +236,7 @@ git status --short
 
 每次提交前依次回答三个问题：哪些文件发生了变化（\texttt{status}），具体改了什么（\texttt{diff}），准备把哪些变化写入本次提交（\texttt{add} 之后看 \texttt{diff --staged}）。初学阶段明确列出要暂存的文件，而不是在不了解差异时直接使用 \texttt{git add .}；一次提交只完成一个清晰目标。
 
-第一次提交加入 README 和可运行的小程序；第二次提交补充 Codex 新增的功能与运行结果。两次提交的实际终端记录如图~\ref{fig:gitcommit} 所示，关键命令如下。
+第一次提交加入 README 和可运行的小程序；第二次提交补充 Codex 新增的功能与运行结果。在此之后，本实验报告本身作为第三次提交纳入版本管理（后续刷新过程记录图的提交同理），这样每次提交只完成一个清晰目标。前两次提交的实际终端记录如图~\ref{fig:gitcommit} 所示，关键命令如下。
 
 \begin{lstlisting}[language=bash, caption={两次提交使用的关键命令}, label={lst:gitcommit}]
 git status --short
@@ -271,7 +271,9 @@ git remote -v
 git log --oneline --graph --decorate -n 10
 \end{lstlisting}
 
-本机直连 github.com 会出现连接超时（Failed to connect to github.com port 443），而本机 7890 端口已有代理进程在运行，因此推送时用 \texttt{-c http.proxy} 临时指定代理；这也印证了实验指导书中关于 \texttt{http.proxy} 的说明：只在确实需要时才设置代理，用完及时取消，并且不要把代理地址与令牌一起写死进仓库。首次通过 HTTPS 上传时，Git Credential Manager 会在浏览器或凭据管理器中要求完成 GitHub 认证，认证信息由系统凭据管理器保存，不应写入脚本或仓库。随后按实验要求验证「远程更新」流程：在 GitHub 网页上直接修改 README.md 的一行文字并提交（这次提交只存在于远程），再在本地执行 \texttt{git pull} 把远程提交合并到当前分支，最后用 \texttt{git log} 核对两次本地提交和一次远程更新。
+本机直连 github.com 会出现连接超时（Failed to connect to github.com port 443），而本机 7890 端口已有代理进程在运行，因此推送时用 \texttt{-c http.proxy} 临时指定代理；这也印证了实验指导书中关于 \texttt{http.proxy} 的说明：只在确实需要时才设置代理，用完及时取消，并且不要把代理地址与令牌一起写死进仓库。首次通过 HTTPS 上传时，Git Credential Manager 会在浏览器或凭据管理器中要求完成 GitHub 认证，认证信息由系统凭据管理器保存，不应写入脚本或仓库。
+
+实验指导书还要求验证一次「远程更新」流程：在 GitHub 网页上直接修改 README.md 的一行文字并提交（这次提交只存在于远程），再在本地执行 \texttt{git pull} 把远程提交合并到当前分支，最后用 \texttt{git log} 核对本地提交与远程更新，命令如下。需要说明的是，本次实验只完成了上传，没有执行这一步远程更新，因此图~\ref{fig:gitlog} 中看到的提交历史全部来自本地，\texttt{origin/main} 与本地 \texttt{main} 指向同一个提交；网络通畅时按下面的命令补做即可。
 
 \begin{lstlisting}[language=bash, caption={同步远程更新并核对历史}, label={lst:gitpull}]
 git status          # make sure the working tree is clean first
@@ -279,9 +281,9 @@ git pull
 git log --oneline --graph --decorate -n 10
 \end{lstlisting}
 
-同步之后的提交历史、远程仓库信息和工作区状态记录如图~\ref{fig:gitlog} 所示。实践中可以形成固定节奏：开始工作先 \texttt{pull}，修改后看 \texttt{status} 和 \texttt{diff}，确认后 \texttt{add}、\texttt{commit}，结束工作再 \texttt{push}。
+远程仓库信息、提交历史与工作区状态记录如图~\ref{fig:gitlog} 所示。实践中可以形成固定节奏：开始工作先 \texttt{pull}，修改后看 \texttt{status} 和 \texttt{diff}，确认后 \texttt{add}、\texttt{commit}，结束工作再 \texttt{push}。
 
-\termfig{fig_git_log.pdf}{远程仓库信息、提交历史（含一次远程更新）与工作区状态}{fig:gitlog}
+\termfig{fig_git_log.pdf}{远程仓库信息、提交历史与工作区状态（origin/main 与本地 main 一致）}{fig:gitlog}
 
 \subsubsection{忽略规则与 Git 配置文件}
 
