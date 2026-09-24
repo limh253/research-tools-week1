@@ -1,0 +1,18 @@
+input file     : code\sample.txt
+total words    : 257
+distinct words : 122
+
+top 12 words by frequency:
+  #  word            count    ratio
+  1  a                  18   7.00%
+  2  data               16   6.23%
+  3  and                12   4.67%
+  4  user                8   3.11%
+  5  the                 8   3.11%
+  6  privacy             7   2.72%
+  7  private             5   1.95%
+  8  system              5   1.95%
+  9  is                  5   1.95%
+ 10  security            4   1.56%
+ 11  in                  4   1.56%
+ 12  that                4   1.56%

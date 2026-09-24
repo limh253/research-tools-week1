@@ -27,7 +27,16 @@ research-tools-week1/
 ```bash
 # 统计 sample.txt 中出现次数最多的 10 个单词
 python code/text_stats.py code/sample.txt --top 10
+
+# 终端照常打印，同时把文本报告写入指定文件（父目录不存在时自动创建）
+python code/text_stats.py code/sample.txt --top 10 --out result/report.txt
+
+# 把前 15 个高频词画成横向条形图，输出矢量 PDF（需要 matplotlib）
+python code/text_stats.py code/sample.txt --top 15 --chart result/top_words.pdf
 ```
+
+`--out` 与 `--chart` 都不改变默认行为：前者在终端照常打印的同时，把同一份文本报告额外写入指定文件；
+后者需要 matplotlib（未安装时执行 `pip install matplotlib`），输出为前 N 个高频词的矢量 PDF 横向条形图。
 
 ## 实验报告
 
