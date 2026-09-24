@@ -1,0 +1,15 @@
+Data security and privacy protection have become central topics in modern computer systems.
+Every day, users generate a large amount of data, and much of that data contains private information.
+A secure system must protect data in three states: data at rest, data in transit, and data in use.
+Encryption is a basic tool for data protection, and access control is another basic tool.
+Access control decides which user can read which data, and it also decides which operation a user may perform on the data.
+Privacy is different from security: security protects the data, while privacy protects the user.
+Privacy asks who may learn what about a user, and under which condition.
+A system may be secure against an outside attacker and still leak private information to an inside user.
+Therefore, a good design must consider both security and privacy, and a good design must measure the risk.
+Risk analysis estimates how much information an attacker can learn from a system.
+Differential privacy is a formal tool that measures and limits the information that a single record can leak about a user.
+Homomorphic encryption allows a computation on encrypted data, so a system can process data without seeing the private data at all.
+Secure multi-party computation allows several users to compute a function together while each user keeps the private data private.
+These tools show that privacy protection is not only a policy problem, but also a technical problem.
+To protect data and to protect the user, a system should combine policy, cryptography, and careful engineering.
